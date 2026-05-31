@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Build outputs
+build/
+dist/
+target/
+*.o
+*.a
+*.dylib
+*.so
+*.dll
+*.vcvplugin
+
+# VCV Rack SDK / local dependencies
+Rack-SDK/
+dep/
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
