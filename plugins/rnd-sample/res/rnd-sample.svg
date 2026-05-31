@@ -15,24 +15,29 @@
     </pattern>
   </defs>
 
+  <!-- Panel body -->
   <rect width="150" height="380" fill="#111413"/>
   <rect x="5" y="5" width="140" height="370" rx="7" fill="url(#panel)" stroke="#202422" stroke-width="2"/>
   <rect x="7" y="7" width="136" height="366" rx="5" fill="url(#dots)" opacity="0.55"/>
 
+  <!-- Header area. Text is drawn in RndSample.cpp. -->
   <rect x="7" y="7" width="136" height="62" rx="5" fill="url(#header)"/>
   <rect x="7" y="61" width="136" height="8" fill="#d6a33f"/>
   <rect x="18" y="62" width="114" height="1" fill="#f1d58b" opacity="0.75"/>
 
+  <!-- Screw marks -->
   <circle cx="16" cy="17" r="3.2" fill="#0e100f" stroke="#4a504a" stroke-width="1"/>
   <circle cx="134" cy="17" r="3.2" fill="#0e100f" stroke="#4a504a" stroke-width="1"/>
   <circle cx="16" cy="363" r="3.2" fill="#b9ad99" stroke="#7f7568" stroke-width="1"/>
   <circle cx="134" cy="363" r="3.2" fill="#b9ad99" stroke="#7f7568" stroke-width="1"/>
 
+  <!-- Basket display background. Dynamic basket text is drawn in RndSample.cpp. -->
   <rect x="17" y="53" width="116" height="43" rx="5" fill="#181c1a" stroke="#d6a33f" stroke-width="1.2"/>
   <rect x="22" y="58" width="106" height="33" rx="3" fill="#222825"/>
   <line x1="28" y1="66" x2="122" y2="66" stroke="#d6a33f" stroke-width="1" opacity="0.55"/>
   <line x1="28" y1="82" x2="122" y2="82" stroke="#d6a33f" stroke-width="1" opacity="0.25"/>
 
+  <!-- Knob guide marks: PROB 36,147 / N 75,147 / SEED 114,147 -->
   <g fill="none" stroke-linecap="round">
     <path d="M25 117h22" stroke="#d6a33f" stroke-width="2"/>
     <path d="M64 117h22" stroke="#d6a33f" stroke-width="2"/>
@@ -51,22 +56,26 @@
     <line x1="126" y1="147" x2="130" y2="147"/>
   </g>
 
+  <!-- Rules section: NOREP switch 38,228 / RESET button 112,228 -->
   <rect x="15" y="186" width="120" height="61" rx="5" fill="#f7f0e4" opacity="0.72" stroke="#c6baa6" stroke-width="1"/>
   <rect x="21" y="198" width="34" height="39" rx="3" fill="#eadfcb"/>
   <rect x="95" y="198" width="34" height="39" rx="3" fill="#eadfcb"/>
   <circle cx="112" cy="228" r="12" fill="#3a1d1d" opacity="0.12"/>
 
+  <!-- Inputs section: TRIG 38,292 / RESET 112,292 -->
   <rect x="15" y="256" width="120" height="42" rx="5" fill="#202422"/>
   <rect x="21" y="265" width="34" height="26" rx="3" fill="#2c3330"/>
   <rect x="95" y="265" width="34" height="26" rx="3" fill="#2c3330"/>
   <path d="M61 277h28" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
 
+  <!-- Outputs section: V/OCT 38,332 / CV 112,332 / INDEX 38,361 / GATE 112,361 -->
   <rect x="15" y="304" width="120" height="58" rx="5" fill="#f7f0e4" opacity="0.78" stroke="#c6baa6" stroke-width="1"/>
   <rect x="23" y="321" width="30" height="48" rx="3" fill="#eadfcb"/>
   <rect x="97" y="321" width="30" height="48" rx="3" fill="#eadfcb"/>
   <line x1="63" y1="318" x2="87" y2="318" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round"/>
   <line x1="63" y1="347" x2="87" y2="347" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
 
+  <!-- Main separators -->
   <line x1="18" y1="181" x2="132" y2="181" stroke="#b6aa96" stroke-width="1"/>
   <line x1="18" y1="251" x2="132" y2="251" stroke="#b6aa96" stroke-width="1"/>
   <line x1="18" y1="302" x2="132" y2="302" stroke="#b6aa96" stroke-width="1"/>
