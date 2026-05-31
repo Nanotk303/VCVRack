@@ -219,7 +219,9 @@ struct StfPad1 : Module {
 	}
 
 	void process(const ProcessArgs& args) override {
-		const int channels = std::max(1, std::max(inputs[VOCT_INPUT].getChannels(), inputs[GATE_INPUT].getChannels()));
+		const int pitchChannels = inputs[VOCT_INPUT].getChannels();
+		const int gateChannels = inputs[GATE_INPUT].getChannels();
+		const int channels = std::max(1, std::max(pitchChannels, gateChannels));
 		const float levelDb = params[LEVEL_PARAM].getValue();
 		const float amp = dsp::dbToAmplitude(clamp(levelDb, -60.f, 6.f));
 		const float rise = params[RISE_PARAM].getValue();
@@ -234,11 +236,13 @@ struct StfPad1 : Module {
 		bool anyGate = false;
 
 		for (int c = 0; c < channels && c < kMaxChannels; ++c) {
-			const bool gate = !inputs[GATE_INPUT].isConnected() || inputs[GATE_INPUT].getVoltage(c) >= 1.f;
+			const int gateChannel = gateChannels <= 1 ? 0 : std::min(c, gateChannels - 1);
+			const int pitchChannel = pitchChannels <= 1 ? 0 : std::min(c, pitchChannels - 1);
+			const bool gate = !inputs[GATE_INPUT].isConnected() || inputs[GATE_INPUT].getVoltage(gateChannel) >= 1.f;
 			anyGate = anyGate || gate;
 			envs[c].gate(gate);
 			const float env = envs[c].process(args.sampleTime, rise, rel);
-			const float pitch = inputs[VOCT_INPUT].isConnected() ? inputs[VOCT_INPUT].getVoltage(c) : 0.f;
+			const float pitch = inputs[VOCT_INPUT].isConnected() ? inputs[VOCT_INPUT].getVoltage(pitchChannel) : 0.f;
 			const float baseFreq = dsp::FREQ_C4 * std::pow(2.f, pitch);
 
 			const float f1 = baseFreq * std::pow(2.f, det1[c].process(args.sampleTime, drift, rng) / 12.f);
