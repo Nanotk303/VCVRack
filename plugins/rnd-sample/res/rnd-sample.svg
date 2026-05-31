@@ -62,7 +62,7 @@
   <rect x="95" y="186" width="34" height="39" rx="3" fill="#eadfcb"/>
   <circle cx="112" cy="216" r="12" fill="#3a1d1d" opacity="0.12"/>
 
-  <!-- Inputs section: TRIG 38,274 / RESET 112,274 -->
+  <!-- Inputs section: TRIG 38,270 / RESET 112,270 -->
   <rect x="15" y="242" width="120" height="42" rx="5" fill="#202422"/>
   <rect x="21" y="251" width="34" height="26" rx="3" fill="#2c3330"/>
   <rect x="95" y="251" width="34" height="26" rx="3" fill="#2c3330"/>

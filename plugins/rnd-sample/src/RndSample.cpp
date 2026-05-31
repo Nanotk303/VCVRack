@@ -233,10 +233,10 @@ struct PanelLabels : TransparentWidget {
 		label(args.vg, 112, 256, "RESET", 8.f, dark);
 
 		label(args.vg, 75, 293, "OUTPUTS", 7.f, soft);
-		label(args.vg, 38, 296, "V/OCT", 8.f, dark);
-		label(args.vg, 112, 296, "CV", 8.f, dark);
-		label(args.vg, 38, 329, "INDEX", 8.f, dark);
-		label(args.vg, 112, 329, "GATE", 8.f, dark);
+		label(args.vg, 38, 292, "V/OCT", 8.f, dark);
+		label(args.vg, 112, 292, "CV", 8.f, dark);
+		label(args.vg, 38, 325, "INDEX", 8.f, dark);
+		label(args.vg, 112, 325, "GATE", 8.f, dark);
 	}
 };
 
@@ -282,8 +282,8 @@ struct RndSampleWidget : ModuleWidget {
 		addParam(createParamCentered<LEDButton>(Vec(112, 216), module, RndSample::RESET_PARAM));
 		addChild(createLightCentered<MediumLight<RedLight>>(Vec(112, 216), module, RndSample::TRIG_LIGHT));
 
-		addInput(createInputCentered<PJ301MPort>(Vec(38, 274), module, RndSample::TRIG_INPUT));
-		addInput(createInputCentered<PJ301MPort>(Vec(112, 274), module, RndSample::RESET_INPUT));
+		addInput(createInputCentered<PJ301MPort>(Vec(38, 270), module, RndSample::TRIG_INPUT));
+		addInput(createInputCentered<PJ301MPort>(Vec(112, 270), module, RndSample::RESET_INPUT));
 
 		addOutput(createOutputCentered<PJ301MPort>(Vec(38, 310), module, RndSample::VOCT_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(Vec(112, 310), module, RndSample::CV_OUTPUT));

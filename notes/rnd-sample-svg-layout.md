@@ -45,8 +45,8 @@ ces coordonnees.
 
 ### Entrees
 
-- `TRIG` : centre `38,274`
-- `RESET` : centre `112,274`
+- `TRIG` : centre `38,270`
+- `RESET` : centre `112,270`
 
 ### Sorties
 
