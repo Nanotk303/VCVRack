@@ -14,3 +14,13 @@ pour les modules VCV Rack que nous allons construire.
 ## Modules
 
 - `plugins/rnd-sample` : module de sample aleatoire inspire de `rnd.sample`.
+
+## Compiler et installer rnd-sample
+
+Pour compiler le module et l'installer dans VCV Rack sur ce Mac :
+
+```sh
+./scripts/build-install-rnd-sample.sh
+```
+
+Redemarrer VCV Rack apres l'installation pour recharger le plugin.
