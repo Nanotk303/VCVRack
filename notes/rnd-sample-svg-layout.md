@@ -45,13 +45,13 @@ ces coordonnees.
 
 ### Entrees
 
-- `TRIG` : centre `38,279`
-- `RESET` : centre `112,279`
+- `TRIG` : centre `38,274`
+- `RESET` : centre `112,274`
 
 ### Sorties
 
-- `V/OCT` : centre `38,315`
-- `CV` : centre `112,315`
+- `V/OCT` : centre `38,310`
+- `CV` : centre `112,310`
 - `INDEX` : centre `38,343`
 - `GATE` : centre `112,343`
 

@@ -62,13 +62,13 @@
   <rect x="95" y="186" width="34" height="39" rx="3" fill="#eadfcb"/>
   <circle cx="112" cy="216" r="12" fill="#3a1d1d" opacity="0.12"/>
 
-  <!-- Inputs section: TRIG 38,279 / RESET 112,279 -->
+  <!-- Inputs section: TRIG 38,274 / RESET 112,274 -->
   <rect x="15" y="242" width="120" height="42" rx="5" fill="#202422"/>
   <rect x="21" y="251" width="34" height="26" rx="3" fill="#2c3330"/>
   <rect x="95" y="251" width="34" height="26" rx="3" fill="#2c3330"/>
   <path d="M61 263h28" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
 
-  <!-- Outputs section: V/OCT 38,315 / CV 112,315 / INDEX 38,343 / GATE 112,343 -->
+  <!-- Outputs section: V/OCT 38,310 / CV 112,310 / INDEX 38,343 / GATE 112,343 -->
   <rect x="15" y="288" width="120" height="70" rx="5" fill="#f7f0e4" opacity="0.78" stroke="#c6baa6" stroke-width="1"/>
   <rect x="23" y="300" width="30" height="49" rx="3" fill="#eadfcb"/>
   <rect x="97" y="300" width="30" height="49" rx="3" fill="#eadfcb"/>

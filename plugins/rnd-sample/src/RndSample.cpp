@@ -282,11 +282,11 @@ struct RndSampleWidget : ModuleWidget {
 		addParam(createParamCentered<LEDButton>(Vec(112, 216), module, RndSample::RESET_PARAM));
 		addChild(createLightCentered<MediumLight<RedLight>>(Vec(112, 216), module, RndSample::TRIG_LIGHT));
 
-		addInput(createInputCentered<PJ301MPort>(Vec(38, 279), module, RndSample::TRIG_INPUT));
-		addInput(createInputCentered<PJ301MPort>(Vec(112, 279), module, RndSample::RESET_INPUT));
+		addInput(createInputCentered<PJ301MPort>(Vec(38, 274), module, RndSample::TRIG_INPUT));
+		addInput(createInputCentered<PJ301MPort>(Vec(112, 274), module, RndSample::RESET_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(Vec(38, 315), module, RndSample::VOCT_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(112, 315), module, RndSample::CV_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(38, 310), module, RndSample::VOCT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(112, 310), module, RndSample::CV_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(Vec(38, 343), module, RndSample::INDEX_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(Vec(112, 343), module, RndSample::GATE_OUTPUT));
 	}
