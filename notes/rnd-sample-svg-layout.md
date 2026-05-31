@@ -30,7 +30,7 @@ ces coordonnees.
 
 ### Affichage basket
 
-- Zone dynamique : `x=18`, `y=49`, `width=114`, `height=42`
+- Zone dynamique : `x=18`, `y=46`, `width=114`, `height=42`
 
 ### Knobs
 
@@ -50,10 +50,10 @@ ces coordonnees.
 
 ### Sorties
 
-- `V/OCT` : centre `38,319`
-- `CV` : centre `112,319`
-- `INDEX` : centre `38,347`
-- `GATE` : centre `112,347`
+- `V/OCT` : centre `38,315`
+- `CV` : centre `112,315`
+- `INDEX` : centre `38,343`
+- `GATE` : centre `112,343`
 
 ## Recompiler apres modification
 

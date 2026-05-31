@@ -212,7 +212,7 @@ struct PanelLabels : TransparentWidget {
 		label(args.vg, 75, 29, "Rnd-Sample", 18.f, cream);
 		label(args.vg, 75, 45, "Nanotk Audio", 8.f, gold);
 
-		label(args.vg, 75, 63, "BASKET", 7.5f, gold);
+		label(args.vg, 75, 60, "BASKET", 7.5f, gold);
 
 		label(args.vg, 75, 101, "SELECTION", 7.f, soft);
 		label(args.vg, 36, 116, "PROB", 8.f, dark);
@@ -222,19 +222,19 @@ struct PanelLabels : TransparentWidget {
 		label(args.vg, 75, 157, "voices", 6.5f, soft);
 		label(args.vg, 114, 157, "replay", 6.5f, soft);
 
-		label(args.vg, 75, 176, "RULES", 7.f, soft);
+		label(args.vg, 75, 181, "RULES", 7.f, soft);
 		label(args.vg, 38, 197, "NOREP", 8.f, dark);
 		label(args.vg, 112, 197, "RESET", 8.f, dark);
 		label(args.vg, 38, 229, "no repeat", 6.5f, soft);
 		label(args.vg, 112, 229, "seed", 6.5f, soft);
 
-		label(args.vg, 75, 243, "INPUTS", 7.f, soft);
-		label(args.vg, 38, 260, "TRIG", 8.f, dark);
-		label(args.vg, 112, 260, "RESET", 8.f, dark);
+		label(args.vg, 75, 248, "INPUTS", 7.f, soft);
+		label(args.vg, 38, 256, "TRIG", 8.f, dark);
+		label(args.vg, 112, 256, "RESET", 8.f, dark);
 
-		label(args.vg, 75, 288, "OUTPUTS", 7.f, soft);
-		label(args.vg, 38, 301, "V/OCT", 8.f, dark);
-		label(args.vg, 112, 301, "CV", 8.f, dark);
+		label(args.vg, 75, 293, "OUTPUTS", 7.f, soft);
+		label(args.vg, 38, 296, "V/OCT", 8.f, dark);
+		label(args.vg, 112, 296, "CV", 8.f, dark);
 		label(args.vg, 38, 329, "INDEX", 8.f, dark);
 		label(args.vg, 112, 329, "GATE", 8.f, dark);
 	}
@@ -271,7 +271,7 @@ struct RndSampleWidget : ModuleWidget {
 
 		auto* display = new BasketDisplay;
 		display->module = module;
-		display->box.pos = Vec(18, 49);
+		display->box.pos = Vec(18, 46);
 		display->box.size = Vec(114, 42);
 		addChild(display);
 
@@ -285,10 +285,10 @@ struct RndSampleWidget : ModuleWidget {
 		addInput(createInputCentered<PJ301MPort>(Vec(38, 279), module, RndSample::TRIG_INPUT));
 		addInput(createInputCentered<PJ301MPort>(Vec(112, 279), module, RndSample::RESET_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(Vec(38, 319), module, RndSample::VOCT_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(112, 319), module, RndSample::CV_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(38, 347), module, RndSample::INDEX_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(112, 347), module, RndSample::GATE_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(38, 315), module, RndSample::VOCT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(112, 315), module, RndSample::CV_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(38, 343), module, RndSample::INDEX_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(112, 343), module, RndSample::GATE_OUTPUT));
 	}
 
 	void appendContextMenu(ui::Menu* menu) override {

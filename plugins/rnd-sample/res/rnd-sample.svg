@@ -68,12 +68,12 @@
   <rect x="95" y="251" width="34" height="26" rx="3" fill="#2c3330"/>
   <path d="M61 263h28" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
 
-  <!-- Outputs section: V/OCT 38,319 / CV 112,319 / INDEX 38,347 / GATE 112,347 -->
+  <!-- Outputs section: V/OCT 38,315 / CV 112,315 / INDEX 38,343 / GATE 112,343 -->
   <rect x="15" y="288" width="120" height="70" rx="5" fill="#f7f0e4" opacity="0.78" stroke="#c6baa6" stroke-width="1"/>
-  <rect x="23" y="304" width="30" height="49" rx="3" fill="#eadfcb"/>
-  <rect x="97" y="304" width="30" height="49" rx="3" fill="#eadfcb"/>
-  <line x1="63" y1="304" x2="87" y2="304" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round"/>
-  <line x1="63" y1="333" x2="87" y2="333" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+  <rect x="23" y="300" width="30" height="49" rx="3" fill="#eadfcb"/>
+  <rect x="97" y="300" width="30" height="49" rx="3" fill="#eadfcb"/>
+  <line x1="63" y1="300" x2="87" y2="300" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="63" y1="329" x2="87" y2="329" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
 
   <!-- Main separators -->
   <line x1="18" y1="170" x2="132" y2="170" stroke="#b6aa96" stroke-width="1"/>
