@@ -22,15 +22,17 @@ struct SimpleAdsr {
 
 	Stage stage = IDLE;
 	float env = 0.f;
+	bool wasGateHigh = false;
 
 	void gate(bool high) {
-		if (high) {
-			if (stage == IDLE || stage == RELEASE)
-				stage = ATTACK;
+		if (high && !wasGateHigh) {
+			env = 0.f;
+			stage = ATTACK;
 		}
-		else if (stage != IDLE && stage != RELEASE) {
+		else if (!high && wasGateHigh) {
 			stage = RELEASE;
 		}
+		wasGateHigh = high;
 	}
 
 	float process(float dt, float attack, float release) {
