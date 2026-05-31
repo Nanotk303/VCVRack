@@ -1,0 +1,25 @@
+{
+  "slug": "mts-midi-cv",
+  "name": "MTS MIDI-CV",
+  "version": "2.0.0",
+  "license": "GPL-3.0-or-later",
+  "brand": "Nanotk Audio",
+  "author": "Nanotk Audio",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "https://github.com/Nanotk303/VCVRack/tree/main/Nanotk/mts-midi-cv",
+  "modules": [
+    {
+      "slug": "mts-midi-cv",
+      "name": "MTS MIDI-CV",
+      "description": "VCV-style MIDI to CV interface with MIDI Tuning Standard SysEx support.",
+      "tags": [
+        "External",
+        "MIDI",
+        "Polyphonic"
+      ]
+    }
+  ]
+}

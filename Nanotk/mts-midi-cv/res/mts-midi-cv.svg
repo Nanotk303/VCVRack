@@ -1,0 +1,22 @@
+<svg width="180" height="380" viewBox="0 0 180 380" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="380" rx="0" fill="#202326"/>
+  <rect x="8" y="8" width="164" height="364" rx="5" fill="#f2f0e8"/>
+  <rect x="8" y="8" width="164" height="62" rx="5" fill="#24272b"/>
+  <text x="90" y="31" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="middle" fill="#f2f0e8">MTS MIDI-CV</text>
+  <text x="90" y="49" font-family="Arial, Helvetica, sans-serif" font-size="8" text-anchor="middle" fill="#d0a23f">Nanotk Audio</text>
+  <text x="90" y="92" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#687068">MIDI INPUT</text>
+  <text x="90" y="143" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#687068">PITCH / PERFORMANCE</text>
+  <text x="45" y="172" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">V/OCT</text>
+  <text x="90" y="172" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">GATE</text>
+  <text x="135" y="172" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">VEL</text>
+  <text x="45" y="222" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">AFT</text>
+  <text x="90" y="222" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">PW</text>
+  <text x="135" y="222" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">MOD</text>
+  <text x="90" y="272" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#687068">TRANSPORT</text>
+  <text x="45" y="301" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">CLK</text>
+  <text x="90" y="301" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">CLK/N</text>
+  <text x="135" y="301" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">RTRG</text>
+  <text x="45" y="350" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">STRT</text>
+  <text x="90" y="350" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">STOP</text>
+  <text x="135" y="350" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#232629">CONT</text>
+</svg>
