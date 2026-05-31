@@ -205,32 +205,76 @@ struct MtsMidiCv : Module {
 	}
 };
 
+struct MtsMidiCvLabels : TransparentWidget {
+	static void label(NVGcontext* vg, float x, float y, const char* text, float size, NVGcolor color, int align = NVG_ALIGN_CENTER) {
+		nvgFontSize(vg, size);
+		nvgFontFaceId(vg, APP->window->uiFont->handle);
+		nvgFillColor(vg, color);
+		nvgTextAlign(vg, align | NVG_ALIGN_MIDDLE);
+		nvgText(vg, x, y, text, NULL);
+	}
+
+	void draw(const DrawArgs& args) override {
+		const NVGcolor dark = nvgRGB(34, 38, 39);
+		const NVGcolor soft = nvgRGB(101, 107, 102);
+		const NVGcolor gold = nvgRGB(213, 164, 52);
+		const NVGcolor cream = nvgRGB(244, 241, 232);
+
+		label(args.vg, 90, 27, "MTS MIDI-CV", 16.f, cream);
+		label(args.vg, 90, 45, "Nanotk Audio", 8.f, gold);
+		label(args.vg, 134, 45, "MTS", 7.f, gold);
+
+		label(args.vg, 90, 76, "MIDI INPUT", 7.f, soft);
+		label(args.vg, 90, 150, "PITCH / PERFORMANCE", 7.f, soft);
+		label(args.vg, 90, 266, "TRANSPORT", 7.f, soft);
+
+		label(args.vg, 45, 168, "V/OCT", 8.f, dark);
+		label(args.vg, 90, 168, "GATE", 8.f, dark);
+		label(args.vg, 135, 168, "VEL", 8.f, dark);
+		label(args.vg, 45, 215, "AFT", 8.f, dark);
+		label(args.vg, 90, 215, "PW", 8.f, dark);
+		label(args.vg, 135, 215, "MOD", 8.f, dark);
+
+		label(args.vg, 45, 284, "CLK", 8.f, dark);
+		label(args.vg, 90, 284, "CLK/N", 8.f, dark);
+		label(args.vg, 135, 284, "RTRG", 8.f, dark);
+		label(args.vg, 45, 331, "STRT", 8.f, dark);
+		label(args.vg, 90, 331, "STOP", 8.f, dark);
+		label(args.vg, 135, 331, "CONT", 8.f, dark);
+	}
+};
+
 struct MtsMidiCvWidget : ModuleWidget {
 	MtsMidiCvWidget(MtsMidiCv* module) {
 		setModule(module);
 		setPanel(createPanel(asset::plugin(pluginInstance, "res/mts-midi-cv.svg")));
 
+		auto* labels = new MtsMidiCvLabels;
+		labels->box.pos = Vec(0, 0);
+		labels->box.size = Vec(180, 380);
+		addChild(labels);
+
 		if (module) {
-			app::MidiDisplay* midiDisplay = createWidget<app::MidiDisplay>(Vec(18, 101));
+			app::MidiDisplay* midiDisplay = createWidget<app::MidiDisplay>(Vec(18, 85));
 			midiDisplay->box.size = Vec(144, 67);
 			midiDisplay->setMidiPort(&module->midiInput);
 			addChild(midiDisplay);
 		}
 
-		addChild(createLightCentered<MediumLight<GreenLight>>(Vec(151, 49), module, MtsMidiCv::MTS_LIGHT));
+		addChild(createLightCentered<MediumLight<GreenLight>>(Vec(151, 35), module, MtsMidiCv::MTS_LIGHT));
 
-		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 188), module, MtsMidiCv::VOCT_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 188), module, MtsMidiCv::GATE_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 188), module, MtsMidiCv::VELOCITY_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 238), module, MtsMidiCv::AFTERTOUCH_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 238), module, MtsMidiCv::PW_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 238), module, MtsMidiCv::MOD_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 317), module, MtsMidiCv::CLOCK_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 317), module, MtsMidiCv::CLOCK_DIV_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 317), module, MtsMidiCv::RETRIGGER_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 366), module, MtsMidiCv::START_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 366), module, MtsMidiCv::STOP_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 366), module, MtsMidiCv::CONTINUE_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 184), module, MtsMidiCv::VOCT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 184), module, MtsMidiCv::GATE_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 184), module, MtsMidiCv::VELOCITY_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 231), module, MtsMidiCv::AFTERTOUCH_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 231), module, MtsMidiCv::PW_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 231), module, MtsMidiCv::MOD_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 300), module, MtsMidiCv::CLOCK_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 300), module, MtsMidiCv::CLOCK_DIV_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 300), module, MtsMidiCv::RETRIGGER_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 347), module, MtsMidiCv::START_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 347), module, MtsMidiCv::STOP_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 347), module, MtsMidiCv::CONTINUE_OUTPUT));
 	}
 
 	void appendContextMenu(ui::Menu* menu) override {
