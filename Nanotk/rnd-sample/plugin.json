@@ -1,7 +1,7 @@
 {
   "slug": "rnd-sample",
   "name": "rnd-sample",
-  "version": "2.1.0",
+  "version": "2.0.7",
   "license": "MIT",
   "brand": "Nanotk Audio",
   "author": "Nanotk Audio",
@@ -9,7 +9,7 @@
   "authorUrl": "",
   "pluginUrl": "",
   "manualUrl": "",
-  "sourceUrl": "https://github.com/Nanotk303/VCVRack/tree/main/plugins/rnd-sample",
+  "sourceUrl": "https://github.com/Nanotk303/VCVRack/tree/main/Nanotk/rnd-sample",
   "modules": [
     {
       "slug": "rnd-sample",
@@ -20,17 +20,6 @@
         "Sample and hold",
         "Sequencer",
         "Polyphonic"
-      ]
-    },
-    {
-      "slug": "stf-pad1",
-      "name": "Stf-Pad1",
-      "description": "Editable wavetable pad voice inspired by the PAD1 Csound instrument.",
-      "tags": [
-        "Synth voice",
-        "Wavetable",
-        "Polyphonic",
-        "Dual/Stereo"
       ]
     }
   ]

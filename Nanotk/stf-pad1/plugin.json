@@ -1,0 +1,26 @@
+{
+  "slug": "stf-pad1",
+  "name": "Stf-Pad1",
+  "version": "1.0.0",
+  "license": "MIT",
+  "brand": "Nanotk Audio",
+  "author": "Nanotk",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "https://github.com/Nanotk303/VCVRack/tree/main/Nanotk/stf-pad1",
+  "modules": [
+    {
+      "slug": "stf-pad1",
+      "name": "Stf-Pad1",
+      "description": "Editable wavetable pad voice inspired by the PAD1 Csound instrument.",
+      "tags": [
+        "Synth voice",
+        "Wavetable",
+        "Polyphonic",
+        "Dual/Stereo"
+      ]
+    }
+  ]
+}

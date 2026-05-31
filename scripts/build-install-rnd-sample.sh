@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PLUGIN_DIR="$ROOT_DIR/plugins/rnd-sample"
+PLUGIN_DIR="$ROOT_DIR/Nanotk/rnd-sample"
 RACK_SDK="$ROOT_DIR/Rack-SDK"
 RACK_PLUGINS_DIR="$HOME/Library/Application Support/Rack2/plugins-mac-arm64"
 INSTALL_DIR="$RACK_PLUGINS_DIR/rnd-sample"
