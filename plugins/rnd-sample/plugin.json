@@ -1,0 +1,26 @@
+{
+  "slug": "rnd-sample",
+  "name": "rnd-sample",
+  "version": "2.0.6",
+  "license": "MIT",
+  "brand": "Codex Audio",
+  "author": "Codex Audio",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "https://github.com/Nanotk303/VCVRack/tree/main/plugins/rnd-sample",
+  "modules": [
+    {
+      "slug": "rnd-sample",
+      "name": "rnd-sample",
+      "description": "Randomly samples values from an editable basket, inspired by Opusmodus rnd.sample.",
+      "tags": [
+        "Random",
+        "Sample and hold",
+        "Sequencer",
+        "Polyphonic"
+      ]
+    }
+  ]
+}

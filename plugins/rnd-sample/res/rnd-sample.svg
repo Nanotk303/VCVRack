@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150" height="380" viewBox="0 0 150 380" xmlns="http://www.w3.org/2000/svg">
+  <rect width="150" height="380" fill="#121414"/>
+  <rect x="6" y="6" width="138" height="368" rx="7" fill="#f1eadc" stroke="#202422" stroke-width="2"/>
+
+  <rect x="6" y="6" width="138" height="54" rx="7" fill="#202422"/>
+  <text x="75" y="32" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#f7f0e4">Rnd-Sample</text>
+  <text x="75" y="49" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" fill="#d7a746">Codex Audio</text>
+
+  <rect x="17" y="52" width="116" height="42" rx="4" fill="#202422" stroke="#d7a746" stroke-width="1.2"/>
+  <text x="75" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="700" fill="#d7a746">BASKET</text>
+  <text x="75" y="99" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" fill="#f7f0e4">right-click to edit</text>
+
+  <line x1="18" y1="181" x2="132" y2="181" stroke="#b9b4aa" stroke-width="1"/>
+  <line x1="18" y1="251" x2="132" y2="251" stroke="#b9b4aa" stroke-width="1"/>
+  <line x1="18" y1="302" x2="132" y2="302" stroke="#b9b4aa" stroke-width="1"/>
+</svg>

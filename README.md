@@ -11,3 +11,6 @@ pour les modules VCV Rack que nous allons construire.
 - `notes/` : idees, specifications et recherches
 - `assets/` : images, panneaux, ressources graphiques
 
+## Modules
+
+- `plugins/rnd-sample` : module de sample aleatoire inspire de `rnd.sample`.
