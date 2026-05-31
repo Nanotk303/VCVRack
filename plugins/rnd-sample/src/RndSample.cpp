@@ -233,8 +233,8 @@ struct PanelLabels : TransparentWidget {
 		label(args.vg, 112, 256, "RESET", 8.f, dark);
 
 		label(args.vg, 75, 293, "OUTPUTS", 7.f, soft);
-		label(args.vg, 38, 292, "V/OCT", 8.f, dark);
-		label(args.vg, 112, 292, "CV", 8.f, dark);
+		label(args.vg, 38, 294, "V/OCT", 8.f, dark);
+		label(args.vg, 112, 294, "CV", 8.f, dark);
 		label(args.vg, 38, 327, "INDEX", 8.f, dark);
 		label(args.vg, 112, 327, "GATE", 8.f, dark);
 	}
