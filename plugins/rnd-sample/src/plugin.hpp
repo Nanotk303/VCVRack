@@ -6,3 +6,4 @@ using namespace rack;
 
 extern Plugin* pluginInstance;
 extern Model* modelRndSample;
+extern Model* modelStfPad1;
