@@ -209,34 +209,34 @@ struct PanelLabels : TransparentWidget {
 		const NVGcolor gold = nvgRGB(215, 167, 70);
 		const NVGcolor cream = nvgRGB(247, 240, 228);
 
-		label(args.vg, 75, 31, "Rnd-Sample", 18.f, cream);
-		label(args.vg, 75, 49, "Codex Audio", 8.f, gold);
+		label(args.vg, 75, 29, "Rnd-Sample", 18.f, cream);
+		label(args.vg, 75, 45, "Nanotk Audio", 8.f, gold);
 
-		label(args.vg, 75, 66, "BASKET", 7.5f, gold);
+		label(args.vg, 75, 63, "BASKET", 7.5f, gold);
 
-		label(args.vg, 75, 107, "SELECTION", 7.f, soft);
-		label(args.vg, 36, 121, "PROB", 8.f, dark);
-		label(args.vg, 75, 121, "N", 8.f, dark);
-		label(args.vg, 114, 121, "SEED", 8.f, dark);
-		label(args.vg, 36, 162, "bias", 6.5f, soft);
-		label(args.vg, 75, 162, "voices", 6.5f, soft);
-		label(args.vg, 114, 162, "replay", 6.5f, soft);
+		label(args.vg, 75, 101, "SELECTION", 7.f, soft);
+		label(args.vg, 36, 116, "PROB", 8.f, dark);
+		label(args.vg, 75, 116, "N", 8.f, dark);
+		label(args.vg, 114, 116, "SEED", 8.f, dark);
+		label(args.vg, 36, 157, "bias", 6.5f, soft);
+		label(args.vg, 75, 157, "voices", 6.5f, soft);
+		label(args.vg, 114, 157, "replay", 6.5f, soft);
 
-		label(args.vg, 75, 181, "RULES", 7.f, soft);
-		label(args.vg, 38, 202, "NOREP", 8.f, dark);
-		label(args.vg, 112, 202, "RESET", 8.f, dark);
-		label(args.vg, 38, 234, "no repeat", 6.5f, soft);
-		label(args.vg, 112, 234, "seed", 6.5f, soft);
+		label(args.vg, 75, 176, "RULES", 7.f, soft);
+		label(args.vg, 38, 197, "NOREP", 8.f, dark);
+		label(args.vg, 112, 197, "RESET", 8.f, dark);
+		label(args.vg, 38, 229, "no repeat", 6.5f, soft);
+		label(args.vg, 112, 229, "seed", 6.5f, soft);
 
-		label(args.vg, 75, 248, "INPUTS", 7.f, soft);
-		label(args.vg, 38, 265, "TRIG", 8.f, dark);
-		label(args.vg, 112, 265, "RESET", 8.f, dark);
+		label(args.vg, 75, 243, "INPUTS", 7.f, soft);
+		label(args.vg, 38, 260, "TRIG", 8.f, dark);
+		label(args.vg, 112, 260, "RESET", 8.f, dark);
 
-		label(args.vg, 75, 293, "OUTPUTS", 7.f, soft);
-		label(args.vg, 38, 306, "V/OCT", 8.f, dark);
-		label(args.vg, 112, 306, "CV", 8.f, dark);
-		label(args.vg, 38, 334, "INDEX", 8.f, dark);
-		label(args.vg, 112, 334, "GATE", 8.f, dark);
+		label(args.vg, 75, 288, "OUTPUTS", 7.f, soft);
+		label(args.vg, 38, 301, "V/OCT", 8.f, dark);
+		label(args.vg, 112, 301, "CV", 8.f, dark);
+		label(args.vg, 38, 329, "INDEX", 8.f, dark);
+		label(args.vg, 112, 329, "GATE", 8.f, dark);
 	}
 };
 
