@@ -225,15 +225,15 @@ struct MtsMidiCvLabels : TransparentWidget {
 		label(args.vg, 134, 45, "MTS", 7.f, gold);
 
 		label(args.vg, 90, 76, "MIDI INPUT", 7.f, soft);
-		label(args.vg, 90, 150, "PITCH / PERFORMANCE", 7.f, soft);
+		label(args.vg, 90, 169, "PITCH / PERFORMANCE", 7.f, soft);
 		label(args.vg, 90, 266, "TRANSPORT", 7.f, soft);
 
-		label(args.vg, 45, 168, "V/OCT", 8.f, dark);
-		label(args.vg, 90, 168, "GATE", 8.f, dark);
-		label(args.vg, 135, 168, "VEL", 8.f, dark);
-		label(args.vg, 45, 215, "AFT", 8.f, dark);
-		label(args.vg, 90, 215, "PW", 8.f, dark);
-		label(args.vg, 135, 215, "MOD", 8.f, dark);
+		label(args.vg, 45, 187, "V/OCT", 8.f, dark);
+		label(args.vg, 90, 187, "GATE", 8.f, dark);
+		label(args.vg, 135, 187, "VEL", 8.f, dark);
+		label(args.vg, 45, 231, "AFT", 8.f, dark);
+		label(args.vg, 90, 231, "PW", 8.f, dark);
+		label(args.vg, 135, 231, "MOD", 8.f, dark);
 
 		label(args.vg, 45, 284, "CLK", 8.f, dark);
 		label(args.vg, 90, 284, "CLK/N", 8.f, dark);
@@ -255,20 +255,20 @@ struct MtsMidiCvWidget : ModuleWidget {
 		addChild(labels);
 
 		if (module) {
-			app::MidiDisplay* midiDisplay = createWidget<app::MidiDisplay>(Vec(18, 85));
-			midiDisplay->box.size = Vec(144, 67);
+			app::MidiDisplay* midiDisplay = createWidget<app::MidiDisplay>(Vec(15, 84));
+			midiDisplay->box.size = Vec(150, 67);
 			midiDisplay->setMidiPort(&module->midiInput);
 			addChild(midiDisplay);
 		}
 
 		addChild(createLightCentered<MediumLight<GreenLight>>(Vec(151, 35), module, MtsMidiCv::MTS_LIGHT));
 
-		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 184), module, MtsMidiCv::VOCT_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 184), module, MtsMidiCv::GATE_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 184), module, MtsMidiCv::VELOCITY_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 231), module, MtsMidiCv::AFTERTOUCH_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 231), module, MtsMidiCv::PW_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 231), module, MtsMidiCv::MOD_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 203), module, MtsMidiCv::VOCT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 203), module, MtsMidiCv::GATE_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 203), module, MtsMidiCv::VELOCITY_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 247), module, MtsMidiCv::AFTERTOUCH_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 247), module, MtsMidiCv::PW_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 247), module, MtsMidiCv::MOD_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(Vec(45, 300), module, MtsMidiCv::CLOCK_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(Vec(90, 300), module, MtsMidiCv::CLOCK_DIV_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(Vec(135, 300), module, MtsMidiCv::RETRIGGER_OUTPUT));
