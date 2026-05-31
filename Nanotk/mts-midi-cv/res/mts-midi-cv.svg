@@ -2,9 +2,9 @@
   <rect width="180" height="380" rx="0" fill="#202326"/>
   <rect x="8" y="8" width="164" height="364" rx="5" fill="#f2f0e8"/>
   <path d="M8 13 Q8 8 13 8 H167 Q172 8 172 13 V58 Q172 63 167 63 H13 Q8 63 8 58 Z" fill="#24272b"/>
-  <rect x="14" y="68" width="152" height="92" rx="3" fill="#dedbd0"/>
-  <rect x="22" y="171" width="136" height="86" rx="2" fill="#e7e4db"/>
+  <rect x="12" y="68" width="156" height="106" rx="3" fill="#dedbd0"/>
+  <rect x="22" y="181" width="136" height="76" rx="2" fill="#e7e4db"/>
   <rect x="22" y="267" width="136" height="92" rx="2" fill="#e7e4db"/>
-  <line x1="28" y1="164" x2="152" y2="164" stroke="#c9c4b8" stroke-width="1"/>
+  <line x1="28" y1="177" x2="152" y2="177" stroke="#c9c4b8" stroke-width="1"/>
   <line x1="28" y1="260" x2="152" y2="260" stroke="#c9c4b8" stroke-width="1"/>
 </svg>
