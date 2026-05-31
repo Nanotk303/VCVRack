@@ -32,51 +32,51 @@
   <circle cx="134" cy="363" r="3.2" fill="#b9ad99" stroke="#7f7568" stroke-width="1"/>
 
   <!-- Basket display background. Dynamic basket text is drawn in RndSample.cpp. -->
-  <rect x="17" y="53" width="116" height="43" rx="5" fill="#181c1a" stroke="#d6a33f" stroke-width="1.2"/>
-  <rect x="22" y="58" width="106" height="33" rx="3" fill="#222825"/>
-  <line x1="28" y1="66" x2="122" y2="66" stroke="#d6a33f" stroke-width="1" opacity="0.55"/>
-  <line x1="28" y1="82" x2="122" y2="82" stroke="#d6a33f" stroke-width="1" opacity="0.25"/>
+  <rect x="17" y="50" width="116" height="43" rx="5" fill="#181c1a" stroke="#d6a33f" stroke-width="1.2"/>
+  <rect x="22" y="55" width="106" height="33" rx="3" fill="#222825"/>
+  <line x1="28" y1="63" x2="122" y2="63" stroke="#d6a33f" stroke-width="1" opacity="0.55"/>
+  <line x1="28" y1="79" x2="122" y2="79" stroke="#d6a33f" stroke-width="1" opacity="0.25"/>
 
-  <!-- Knob guide marks: PROB 36,147 / N 75,147 / SEED 114,147 -->
+  <!-- Knob guide marks: PROB 36,139 / N 75,139 / SEED 114,139 -->
   <g fill="none" stroke-linecap="round">
-    <path d="M25 117h22" stroke="#d6a33f" stroke-width="2"/>
-    <path d="M64 117h22" stroke="#d6a33f" stroke-width="2"/>
-    <path d="M103 117h22" stroke="#d6a33f" stroke-width="2"/>
-    <path d="M30 137a20 20 0 0 1 12 0" stroke="#81786b" stroke-width="1.1"/>
-    <path d="M69 137a20 20 0 0 1 12 0" stroke="#81786b" stroke-width="1.1"/>
-    <path d="M108 137a20 20 0 0 1 12 0" stroke="#81786b" stroke-width="1.1"/>
+    <path d="M25 109h22" stroke="#d6a33f" stroke-width="2"/>
+    <path d="M64 109h22" stroke="#d6a33f" stroke-width="2"/>
+    <path d="M103 109h22" stroke="#d6a33f" stroke-width="2"/>
+    <path d="M30 129a20 20 0 0 1 12 0" stroke="#81786b" stroke-width="1.1"/>
+    <path d="M69 129a20 20 0 0 1 12 0" stroke="#81786b" stroke-width="1.1"/>
+    <path d="M108 129a20 20 0 0 1 12 0" stroke="#81786b" stroke-width="1.1"/>
   </g>
 
   <g stroke="#81786b" stroke-width="1" opacity="0.75">
-    <line x1="24" y1="147" x2="20" y2="147"/>
-    <line x1="48" y1="147" x2="52" y2="147"/>
-    <line x1="63" y1="147" x2="59" y2="147"/>
-    <line x1="87" y1="147" x2="91" y2="147"/>
-    <line x1="102" y1="147" x2="98" y2="147"/>
-    <line x1="126" y1="147" x2="130" y2="147"/>
+    <line x1="24" y1="139" x2="20" y2="139"/>
+    <line x1="48" y1="139" x2="52" y2="139"/>
+    <line x1="63" y1="139" x2="59" y2="139"/>
+    <line x1="87" y1="139" x2="91" y2="139"/>
+    <line x1="102" y1="139" x2="98" y2="139"/>
+    <line x1="126" y1="139" x2="130" y2="139"/>
   </g>
 
-  <!-- Rules section: NOREP switch 38,228 / RESET button 112,228 -->
-  <rect x="15" y="186" width="120" height="61" rx="5" fill="#f7f0e4" opacity="0.72" stroke="#c6baa6" stroke-width="1"/>
-  <rect x="21" y="198" width="34" height="39" rx="3" fill="#eadfcb"/>
-  <rect x="95" y="198" width="34" height="39" rx="3" fill="#eadfcb"/>
-  <circle cx="112" cy="228" r="12" fill="#3a1d1d" opacity="0.12"/>
+  <!-- Rules section: NOREP switch 38,216 / RESET button 112,216 -->
+  <rect x="15" y="174" width="120" height="65" rx="5" fill="#f7f0e4" opacity="0.72" stroke="#c6baa6" stroke-width="1"/>
+  <rect x="21" y="186" width="34" height="39" rx="3" fill="#eadfcb"/>
+  <rect x="95" y="186" width="34" height="39" rx="3" fill="#eadfcb"/>
+  <circle cx="112" cy="216" r="12" fill="#3a1d1d" opacity="0.12"/>
 
-  <!-- Inputs section: TRIG 38,292 / RESET 112,292 -->
-  <rect x="15" y="256" width="120" height="42" rx="5" fill="#202422"/>
-  <rect x="21" y="265" width="34" height="26" rx="3" fill="#2c3330"/>
-  <rect x="95" y="265" width="34" height="26" rx="3" fill="#2c3330"/>
-  <path d="M61 277h28" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+  <!-- Inputs section: TRIG 38,279 / RESET 112,279 -->
+  <rect x="15" y="242" width="120" height="42" rx="5" fill="#202422"/>
+  <rect x="21" y="251" width="34" height="26" rx="3" fill="#2c3330"/>
+  <rect x="95" y="251" width="34" height="26" rx="3" fill="#2c3330"/>
+  <path d="M61 263h28" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
 
-  <!-- Outputs section: V/OCT 38,332 / CV 112,332 / INDEX 38,361 / GATE 112,361 -->
-  <rect x="15" y="304" width="120" height="58" rx="5" fill="#f7f0e4" opacity="0.78" stroke="#c6baa6" stroke-width="1"/>
-  <rect x="23" y="321" width="30" height="48" rx="3" fill="#eadfcb"/>
-  <rect x="97" y="321" width="30" height="48" rx="3" fill="#eadfcb"/>
-  <line x1="63" y1="318" x2="87" y2="318" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round"/>
-  <line x1="63" y1="347" x2="87" y2="347" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+  <!-- Outputs section: V/OCT 38,319 / CV 112,319 / INDEX 38,347 / GATE 112,347 -->
+  <rect x="15" y="288" width="120" height="70" rx="5" fill="#f7f0e4" opacity="0.78" stroke="#c6baa6" stroke-width="1"/>
+  <rect x="23" y="304" width="30" height="49" rx="3" fill="#eadfcb"/>
+  <rect x="97" y="304" width="30" height="49" rx="3" fill="#eadfcb"/>
+  <line x1="63" y1="304" x2="87" y2="304" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="63" y1="333" x2="87" y2="333" stroke="#d6a33f" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
 
   <!-- Main separators -->
-  <line x1="18" y1="181" x2="132" y2="181" stroke="#b6aa96" stroke-width="1"/>
-  <line x1="18" y1="251" x2="132" y2="251" stroke="#b6aa96" stroke-width="1"/>
-  <line x1="18" y1="302" x2="132" y2="302" stroke="#b6aa96" stroke-width="1"/>
+  <line x1="18" y1="170" x2="132" y2="170" stroke="#b6aa96" stroke-width="1"/>
+  <line x1="18" y1="238" x2="132" y2="238" stroke="#b6aa96" stroke-width="1"/>
+  <line x1="18" y1="286" x2="132" y2="286" stroke="#b6aa96" stroke-width="1"/>
 </svg>

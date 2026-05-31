@@ -30,30 +30,30 @@ ces coordonnees.
 
 ### Affichage basket
 
-- Zone dynamique : `x=18`, `y=52`, `width=114`, `height=42`
+- Zone dynamique : `x=18`, `y=49`, `width=114`, `height=42`
 
 ### Knobs
 
-- `PROB` : centre `36,147`
-- `N` : centre `75,147`
-- `SEED` : centre `114,147`
+- `PROB` : centre `36,139`
+- `N` : centre `75,139`
+- `SEED` : centre `114,139`
 
 ### Boutons
 
-- `NOREP` switch : centre `38,228`
-- `RESET` bouton lumineux : centre `112,228`
+- `NOREP` switch : centre `38,216`
+- `RESET` bouton lumineux : centre `112,216`
 
 ### Entrees
 
-- `TRIG` : centre `38,292`
-- `RESET` : centre `112,292`
+- `TRIG` : centre `38,279`
+- `RESET` : centre `112,279`
 
 ### Sorties
 
-- `V/OCT` : centre `38,332`
-- `CV` : centre `112,332`
-- `INDEX` : centre `38,361`
-- `GATE` : centre `112,361`
+- `V/OCT` : centre `38,319`
+- `CV` : centre `112,319`
+- `INDEX` : centre `38,347`
+- `GATE` : centre `112,347`
 
 ## Recompiler apres modification
 
@@ -64,4 +64,3 @@ Apres avoir sauvegarde le SVG :
 ```
 
 Puis redemarrer VCV Rack pour voir le nouveau panneau.
-
