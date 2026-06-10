@@ -35,8 +35,23 @@ int main() {
 		std::vector<uint8_t> single = {0xf0, 0x7f, 0x7f, 0x08, 0x02, 0x00, 0x01, 60, 60, 0x20, 0x00, 0xf7};
 		require(tuning.processSysex(single), "single note tuning change should be consumed");
 		require(tuning.seen, "single note tuning change should mark MTS as seen");
+		require(tuning.transient[60], "single note tuning should be transient");
 		near(tuning.semitones[60], 60.25f, "single note tuning semitone decode");
 		near(tuning.getPitchVoltage(60, 0.f, 2.f), 0.25f / 12.f, "single note tuning voltage");
+		tuning.requestTransientReset(60);
+		require(tuning.pendingReset[60], "note release should request a transient reset");
+		tuning.resetNote(60);
+		near(tuning.getPitchVoltage(60, 0.f, 2.f), 0.f, "transient reset should restore equal temperament");
+		require(!tuning.tuned[60] && !tuning.transient[60] && !tuning.pendingReset[60], "transient reset state");
+	}
+	{
+		MtsTuning tuning;
+		std::vector<uint8_t> single = {0xf0, 0x7f, 0x7f, 0x08, 0x02, 0x00, 0x01, 60, 60, 0x20, 0x00, 0xf7};
+		require(tuning.processSysex(single, false), "persistent single note tuning should be consumed");
+		require(!tuning.transient[60], "strict MTS mode should keep single note tuning persistent");
+		tuning.requestTransientReset(60);
+		require(!tuning.pendingReset[60], "strict MTS mode should ignore automatic note-off reset");
+		near(tuning.semitones[60], 60.25f, "strict MTS mode should preserve tuning");
 	}
 	{
 		MtsTuning tuning;
@@ -50,7 +65,10 @@ int main() {
 		}
 		bulk.push_back(0xf7);
 		require(tuning.processSysex(bulk), "bulk tuning dump should be consumed");
+		require(!tuning.transient[69], "bulk tuning should remain persistent");
 		near(tuning.semitones[69], 70.f, "bulk tuning should retune A4 to A#4");
+		tuning.requestTransientReset(69);
+		require(!tuning.pendingReset[69], "note release should not reset persistent bulk tuning");
 		near(tuning.getPitchVoltage(69, 0.f, 2.f), (70.f - 60.f) / 12.f, "bulk tuning voltage");
 	}
 	{
@@ -60,6 +78,7 @@ int main() {
 			scale1.push_back(pc == 0 ? 114 : 64);
 		scale1.push_back(0xf7);
 		require(tuning.processSysex(scale1), "scale/octave 1-byte tuning should be consumed");
+		require(!tuning.transient[60], "scale/octave tuning should remain persistent");
 		near(tuning.semitones[60], 60.5f, "scale/octave 1-byte should retune C by 50 cents");
 		near(tuning.semitones[61], 61.f, "scale/octave 1-byte should leave C# unchanged");
 	}
@@ -79,8 +98,11 @@ int main() {
 		MtsTuning tuning;
 		std::vector<uint8_t> banked = {0xf0, 0x7f, 0x7f, 0x08, 0x07, 0x02, 0x03, 0x01, 72, 72, 0x40, 0x00, 0xf7};
 		require(tuning.processSysex(banked), "banked single note tuning should be consumed");
+		require(tuning.transient[72], "banked single note tuning should be transient");
 		near(tuning.semitones[72], 72.5f, "banked single note tuning semitone decode");
 		near(tuning.getPitchVoltage(72, 0.25f, 2.f), (73.f - 60.f) / 12.f, "pitch wheel should add after MTS");
+		tuning.resetAllTransient();
+		near(tuning.semitones[72], 72.f, "all-notes-off should restore transient tuning");
 	}
 	{
 		MtsTuning tuning;

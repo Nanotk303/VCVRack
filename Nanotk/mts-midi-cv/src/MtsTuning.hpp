@@ -10,6 +10,8 @@ namespace nanotk {
 struct MtsTuning {
 	std::array<float, 128> semitones;
 	std::array<bool, 128> tuned;
+	std::array<bool, 128> transient;
+	std::array<bool, 128> pendingReset;
 	bool seen = false;
 
 	MtsTuning() {
@@ -20,6 +22,8 @@ struct MtsTuning {
 		for (int i = 0; i < 128; ++i) {
 			semitones[i] = (float) i;
 			tuned[i] = false;
+			transient[i] = false;
+			pendingReset[i] = false;
 		}
 		seen = false;
 	}
@@ -29,13 +33,36 @@ struct MtsTuning {
 		return (float) coarse + (float) fine / 16384.f;
 	}
 
-	bool setNote(uint8_t note, uint8_t coarse, uint8_t fineMsb, uint8_t fineLsb) {
+	bool setNote(uint8_t note, uint8_t coarse, uint8_t fineMsb, uint8_t fineLsb, bool isTransient = false) {
 		if (note >= 128 || coarse >= 128)
 			return false;
 		semitones[note] = decodeFrequency(coarse, fineMsb, fineLsb);
 		tuned[note] = true;
+		transient[note] = isTransient;
+		pendingReset[note] = false;
 		seen = true;
 		return true;
+	}
+
+	void requestTransientReset(uint8_t note) {
+		if (note < 128 && transient[note])
+			pendingReset[note] = true;
+	}
+
+	void resetNote(uint8_t note) {
+		if (note >= 128)
+			return;
+		semitones[note] = (float) note;
+		tuned[note] = false;
+		transient[note] = false;
+		pendingReset[note] = false;
+	}
+
+	void resetAllTransient() {
+		for (int note = 0; note < 128; ++note) {
+			if (transient[note])
+				resetNote((uint8_t) note);
+		}
 	}
 
 	void applyScaleOctave1Byte(const std::vector<uint8_t>& bytes, size_t start) {
@@ -46,6 +73,8 @@ struct MtsTuning {
 			for (int note = pc; note < 128; note += 12) {
 				semitones[note] = (float) note + cents / 100.f;
 				tuned[note] = true;
+				transient[note] = false;
+				pendingReset[note] = false;
 			}
 		}
 		seen = true;
@@ -60,12 +89,14 @@ struct MtsTuning {
 			for (int note = pc; note < 128; note += 12) {
 				semitones[note] = (float) note + cents / 100.f;
 				tuned[note] = true;
+				transient[note] = false;
+				pendingReset[note] = false;
 			}
 		}
 		seen = true;
 	}
 
-	bool processSysex(const std::vector<uint8_t>& bytes) {
+	bool processSysex(const std::vector<uint8_t>& bytes, bool singleNoteTransient = true) {
 		if (bytes.size() < 7 || bytes.front() != 0xf0 || bytes[3] != 0x08)
 			return false;
 		if (bytes[1] != 0x7e && bytes[1] != 0x7f)
@@ -82,7 +113,7 @@ struct MtsTuning {
 			int count = bytes[6];
 			size_t p = 7;
 			for (int i = 0; i < count && p + 3 < bytes.size(); ++i, p += 4)
-				setNote(bytes[p], bytes[p + 1], bytes[p + 2], bytes[p + 3]);
+				setNote(bytes[p], bytes[p + 1], bytes[p + 2], bytes[p + 3], singleNoteTransient);
 			return true;
 		}
 		if (subId2 == 0x04) {
@@ -99,7 +130,7 @@ struct MtsTuning {
 			int count = bytes[7];
 			size_t p = 8;
 			for (int i = 0; i < count && p + 3 < bytes.size(); ++i, p += 4)
-				setNote(bytes[p], bytes[p + 1], bytes[p + 2], bytes[p + 3]);
+				setNote(bytes[p], bytes[p + 1], bytes[p + 2], bytes[p + 3], singleNoteTransient);
 			return true;
 		}
 		return true;

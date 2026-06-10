@@ -34,6 +34,7 @@ struct MtsMidiCv : Module {
 	midi::InputQueue midiInput;
 	dsp::MidiParser<16> midiParser;
 	nanotk::MtsTuning mtsTuning;
+	bool resetSingleNoteTuningOnRelease = true;
 
 	MtsMidiCv() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
@@ -58,7 +59,7 @@ struct MtsMidiCv : Module {
 	}
 
 	bool processMtsSysex(const midi::Message& msg) {
-		return mtsTuning.processSysex(msg.bytes);
+		return mtsTuning.processSysex(msg.bytes, resetSingleNoteTuningOnRelease);
 	}
 
 	float getMtsPitchVoltage(int channel) {
@@ -67,11 +68,49 @@ struct MtsMidiCv : Module {
 		return mtsTuning.getPitchVoltage(note, midiParser.pwFilters[wheelChannel].out, midiParser.pwRange);
 	}
 
+	bool isNoteActive(uint8_t note) const {
+		for (int c = 0; c < midiParser.channels; ++c) {
+			if (midiParser.gates[c] && midiParser.notes[c] == note)
+				return true;
+		}
+		return false;
+	}
+
+	void flushPendingTuningResets() {
+		for (int note = 0; note < 128; ++note) {
+			if (mtsTuning.pendingReset[note] && !isNoteActive((uint8_t) note))
+				mtsTuning.resetNote((uint8_t) note);
+		}
+	}
+
 	void process(const ProcessArgs& args) override {
 		midi::Message msg;
 		while (midiInput.tryPop(&msg, args.frame)) {
-			if (!processMtsSysex(msg))
-				midiParser.processMessage(msg);
+			if (processMtsSysex(msg))
+				continue;
+
+			const uint8_t status = msg.getStatus();
+			const bool noteRelease = status == 0x8 || (status == 0x9 && msg.getValue() == 0);
+			const bool sustainRelease = status == 0xb && msg.getNote() == 0x40 && msg.getValue() < 64;
+			const bool allNotesOff = status == 0xb && msg.getNote() == 0x7b && msg.getValue() == 0;
+			const bool midiStop = status == 0xf && msg.getChannel() == 0x0c;
+			const bool systemReset = !msg.bytes.empty() && msg.bytes[0] == 0xff;
+
+			if (noteRelease)
+				mtsTuning.requestTransientReset(msg.getNote());
+
+			midiParser.processMessage(msg);
+
+			if (systemReset) {
+				midiParser.panic();
+				clearTuning();
+			}
+			else if (allNotesOff || midiStop) {
+				mtsTuning.resetAllTransient();
+			}
+			else if (noteRelease || sustainRelease) {
+				flushPendingTuningResets();
+			}
 		}
 
 		midiParser.processFilters(args.sampleTime);
@@ -102,6 +141,7 @@ struct MtsMidiCv : Module {
 		json_t* rootJ = json_object();
 		json_object_set_new(rootJ, "midi", midiInput.toJson());
 		json_object_set_new(rootJ, "parser", midiParser.toJson());
+		json_object_set_new(rootJ, "resetSingleNoteTuningOnRelease", json_boolean(resetSingleNoteTuningOnRelease));
 		return rootJ;
 	}
 
@@ -112,6 +152,9 @@ struct MtsMidiCv : Module {
 		json_t* parserJ = json_object_get(rootJ, "parser");
 		if (parserJ)
 			midiParser.fromJson(parserJ);
+		json_t* resetSingleNoteJ = json_object_get(rootJ, "resetSingleNoteTuningOnRelease");
+		if (resetSingleNoteJ)
+			resetSingleNoteTuningOnRelease = json_boolean_value(resetSingleNoteJ);
 	}
 };
 
@@ -234,7 +277,13 @@ struct MtsMidiCvWidget : ModuleWidget {
 		menu->addChild(createBoolPtrMenuItem("Smooth wheels", "", module ? &module->midiParser.smooth : NULL));
 		menu->addChild(createBoolPtrMenuItem("Release velocity", "", module ? &module->midiParser.releaseVelocityEnabled : NULL));
 		menu->addChild(createBoolPtrMenuItem("Retrigger on resume", "", module ? &module->midiParser.retriggerOnResume : NULL));
-		menu->addChild(createMenuItem("Panic", "", [=]() { if (module) module->midiParser.panic(); }));
+		menu->addChild(createBoolPtrMenuItem("Reset single-note MTS after Note Off", "", module ? &module->resetSingleNoteTuningOnRelease : NULL));
+		menu->addChild(createMenuItem("Panic", "", [=]() {
+			if (module) {
+				module->midiParser.panic();
+				module->mtsTuning.resetAllTransient();
+			}
+		}));
 		menu->addChild(createMenuItem("Clear MTS tuning", "", [=]() { if (module) module->clearTuning(); }));
 	}
 };
