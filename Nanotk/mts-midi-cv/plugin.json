@@ -7,14 +7,15 @@
   "author": "Nanotk Audio",
   "authorEmail": "",
   "authorUrl": "",
-  "pluginUrl": "",
-  "manualUrl": "",
+  "pluginUrl": "https://github.com/Nanotk303/VCVRack/tree/main/Nanotk/mts-midi-cv",
+  "manualUrl": "https://github.com/Nanotk303/VCVRack/blob/main/Nanotk/mts-midi-cv/README.md",
   "sourceUrl": "https://github.com/Nanotk303/VCVRack/tree/main/Nanotk/mts-midi-cv",
   "modules": [
     {
       "slug": "mts-midi-cv",
       "name": "MTS MIDI-CV",
       "description": "VCV-style MIDI to CV interface with MIDI Tuning Standard SysEx support.",
+      "manualUrl": "https://github.com/Nanotk303/VCVRack/blob/main/Nanotk/mts-midi-cv/README.md",
       "tags": [
         "External",
         "MIDI",
