@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <array>
 #include <cstddef>
 #include <cstdint>
@@ -136,10 +137,21 @@ struct MtsTuning {
 		return true;
 	}
 
-	float getPitchVoltage(uint8_t note, float pitchWheel, float pitchWheelRange) const {
+	float getSemitone(uint8_t note, float pitchWheel, float pitchWheelRange) const {
 		float semitone = tuned[note] ? semitones[note] : (float) note;
-		semitone += pitchWheel * pitchWheelRange;
-		return (semitone - 60.f) / 12.f;
+		return semitone + pitchWheel * pitchWheelRange;
+	}
+
+	float getPitchVoltage(uint8_t note, float pitchWheel, float pitchWheelRange) const {
+		return (getSemitone(note, pitchWheel, pitchWheelRange) - 60.f) / 12.f;
+	}
+
+	float getHostPitchWheelVoltage(uint8_t note, float pitchWheel, float pitchWheelRange, float hostBaseSemitone) const {
+		if (pitchWheelRange <= 0.f)
+			return 5.f;
+		float bend = (getSemitone(note, pitchWheel, pitchWheelRange) - hostBaseSemitone) / pitchWheelRange;
+		bend = std::max(-1.f, std::min(1.f, bend));
+		return 5.f + 5.f * bend;
 	}
 };
 

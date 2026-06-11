@@ -2,6 +2,7 @@
 #include "MtsTuning.hpp"
 
 #include <algorithm>
+#include <array>
 #include <cmath>
 
 struct MtsMidiCv : Module {
@@ -35,6 +36,13 @@ struct MtsMidiCv : Module {
 	dsp::MidiParser<16> midiParser;
 	nanotk::MtsTuning mtsTuning;
 	bool resetSingleNoteTuningOnRelease = true;
+	enum PwOutputMode {
+		RAW_MIDI_PW_MODE,
+		HOST_MTS_CORRECTION_MODE
+	};
+	PwOutputMode pwOutputMode = RAW_MIDI_PW_MODE;
+	std::array<float, 16> hostBaseSemitones = {};
+	std::array<bool, 16> hostGateStates = {};
 
 	MtsMidiCv() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
@@ -66,6 +74,19 @@ struct MtsMidiCv : Module {
 		uint8_t note = midiParser.notes[channel];
 		uint8_t wheelChannel = (midiParser.channels > 1 && midiParser.polyMode == dsp::MidiParser<16>::MPE_MODE) ? channel : 0;
 		return mtsTuning.getPitchVoltage(note, midiParser.pwFilters[wheelChannel].out, midiParser.pwRange);
+	}
+
+	float getHostPitchWheelVoltage(int channel, bool gate) {
+		uint8_t note = midiParser.notes[channel];
+		uint8_t wheelChannel = (midiParser.channels > 1 && midiParser.polyMode == dsp::MidiParser<16>::MPE_MODE) ? channel : 0;
+		float wheel = midiParser.pwFilters[wheelChannel].out;
+		float semitone = mtsTuning.getSemitone(note, wheel, midiParser.pwRange);
+		if (gate && !hostGateStates[channel])
+			hostBaseSemitones[channel] = std::round(semitone);
+		hostGateStates[channel] = gate;
+		if (!gate)
+			return 5.f;
+		return mtsTuning.getHostPitchWheelVoltage(note, wheel, midiParser.pwRange, hostBaseSemitones[channel]);
 	}
 
 	bool isNoteActive(uint8_t note) const {
@@ -121,11 +142,13 @@ struct MtsMidiCv : Module {
 			outputs[outputId].setChannels(channels);
 
 		for (int c = 0; c < channels; ++c) {
+			bool gate = midiParser.gates[c];
 			outputs[VOCT_OUTPUT].setVoltage(getMtsPitchVoltage(c), c);
-			outputs[GATE_OUTPUT].setVoltage(midiParser.gates[c] ? 10.f : 0.f, c);
+			outputs[GATE_OUTPUT].setVoltage(gate ? 10.f : 0.f, c);
 			outputs[VELOCITY_OUTPUT].setVoltage(10.f * midiParser.velocities[c] / 127.f, c);
 			outputs[AFTERTOUCH_OUTPUT].setVoltage(10.f * midiParser.aftertouches[c] / 127.f, c);
-			outputs[PW_OUTPUT].setVoltage(5.f * midiParser.getPw(c), c);
+			float pwVoltage = pwOutputMode == HOST_MTS_CORRECTION_MODE ? getHostPitchWheelVoltage(c, gate) : 5.f * midiParser.getPw(c);
+			outputs[PW_OUTPUT].setVoltage(pwVoltage, c);
 			outputs[MOD_OUTPUT].setVoltage(10.f * midiParser.getMod(c), c);
 			outputs[CLOCK_OUTPUT].setVoltage(midiParser.clockPulse.isHigh() ? 10.f : 0.f, c);
 			outputs[CLOCK_DIV_OUTPUT].setVoltage(midiParser.clockDividerPulse.isHigh() ? 10.f : 0.f, c);
@@ -142,6 +165,7 @@ struct MtsMidiCv : Module {
 		json_object_set_new(rootJ, "midi", midiInput.toJson());
 		json_object_set_new(rootJ, "parser", midiParser.toJson());
 		json_object_set_new(rootJ, "resetSingleNoteTuningOnRelease", json_boolean(resetSingleNoteTuningOnRelease));
+		json_object_set_new(rootJ, "pwOutputMode", json_integer(pwOutputMode));
 		return rootJ;
 	}
 
@@ -155,6 +179,9 @@ struct MtsMidiCv : Module {
 		json_t* resetSingleNoteJ = json_object_get(rootJ, "resetSingleNoteTuningOnRelease");
 		if (resetSingleNoteJ)
 			resetSingleNoteTuningOnRelease = json_boolean_value(resetSingleNoteJ);
+		json_t* pwOutputModeJ = json_object_get(rootJ, "pwOutputMode");
+		if (pwOutputModeJ)
+			pwOutputMode = (PwOutputMode) clamp((int) json_integer_value(pwOutputModeJ), 0, 1);
 	}
 };
 
@@ -278,6 +305,9 @@ struct MtsMidiCvWidget : ModuleWidget {
 		menu->addChild(createBoolPtrMenuItem("Release velocity", "", module ? &module->midiParser.releaseVelocityEnabled : NULL));
 		menu->addChild(createBoolPtrMenuItem("Retrigger on resume", "", module ? &module->midiParser.retriggerOnResume : NULL));
 		menu->addChild(createBoolPtrMenuItem("Reset single-note MTS after Note Off", "", module ? &module->resetSingleNoteTuningOnRelease : NULL));
+		menu->addChild(createIndexSubmenuItem("PW output", {"MIDI pitch wheel (-5V to 5V)", "Host MTS correction (0V to 10V)"},
+			[=]() { return module ? (size_t) module->pwOutputMode : 0; },
+			[=](size_t i) { if (module) module->pwOutputMode = (MtsMidiCv::PwOutputMode) i; }));
 		menu->addChild(createMenuItem("Panic", "", [=]() {
 			if (module) {
 				module->midiParser.panic();

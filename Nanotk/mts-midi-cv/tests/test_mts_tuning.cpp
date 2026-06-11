@@ -47,6 +47,14 @@ int main() {
 	{
 		MtsTuning tuning;
 		std::vector<uint8_t> single = {0xf0, 0x7f, 0x7f, 0x08, 0x02, 0x00, 0x01, 60, 60, 0x20, 0x00, 0xf7};
+		require(tuning.processSysex(single), "Host correction tuning should be consumed");
+		near(tuning.getHostPitchWheelVoltage(60, 0.f, 2.f, 60.f), 5.625f, "Host correction should encode +25 cents");
+		near(tuning.getHostPitchWheelVoltage(60, 0.f, 2.f, 61.f), 3.125f, "Host correction should encode pitch below rounded note");
+		near(tuning.getHostPitchWheelVoltage(60, 0.f, 0.f, 60.f), 5.f, "Host correction should center with zero bend range");
+	}
+	{
+		MtsTuning tuning;
+		std::vector<uint8_t> single = {0xf0, 0x7f, 0x7f, 0x08, 0x02, 0x00, 0x01, 60, 60, 0x20, 0x00, 0xf7};
 		require(tuning.processSysex(single, false), "persistent single note tuning should be consumed");
 		require(!tuning.transient[60], "strict MTS mode should keep single note tuning persistent");
 		tuning.requestTransientReset(60);
